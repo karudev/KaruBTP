@@ -1,0 +1,47 @@
+karudev_person_person:
+    resource: "@KarudevPersonBundle/Resources/config/routing/person.yml"
+    prefix:   /person
+
+
+
+
+karudev_person_person_show:
+    path : /person/show/{type}/{id}
+    defaults: { _controller: KarudevPersonBundle:Person:show}
+    methods: [GET]
+    requirements:
+        id: \d+
+    options:
+        expose: true
+
+    
+karudev_person_person_new:
+    path : /person/{type}/new
+    defaults: { _controller: KarudevPersonBundle:Person:new}
+    methods: [GET,POST]
+    options:
+        expose: true
+    
+karudev_person_person_edit:
+    path : /person/{type}/{id}/edit
+    defaults: { _controller: KarudevPersonBundle:Person:edit}
+    methods: [GET,POST]
+    options:
+        expose: true
+
+    
+#path for index enterprise
+karudev_person_enterprise_index:
+    path : /enterprise
+    defaults: { _controller: KarudevPersonBundle:Person/Enterprise:index}
+    
+karudev_person_enterprise_currententerprise:
+    path : /enterprise/current/{id}
+    defaults: { _controller: KarudevPersonBundle:Person/Enterprise:currentEnterprise}
+    options:
+        expose: true
+        
+karudev_person_person_read:
+    path : /person/read5/{person}
+    defaults: { _controller: KarudevPersonBundle:Person:read}
+    methods: [GET]

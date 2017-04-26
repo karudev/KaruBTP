@@ -1,0 +1,21 @@
+{
+    "name": "karudev/PersonBundle",
+    "description": "Gestion des personnes",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Dolyveen Renault, Karudev Informatique",
+            "email": "renault@karudev.fr"
+        },{
+            "name": "Jean Raynal Bebel, Karudev Informatique",
+            "email": "jeanraynal.bebel@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9"
+    },
+    "autoload": {
+        "psr-4": { "Karudev\\PersonBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}

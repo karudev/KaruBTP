@@ -1,0 +1,122 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+
+    {% if Url == 'enterprise' %}
+
+        {% set hasEnterprise = true %}
+    {% else %}
+        {% set hasEnterprise = false %}
+
+    {% endif %}
+
+
+    <div class="container-fluid">
+
+        <h1 class="text-center">List </h1>
+
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12">
+
+                <table id="myTable" class=" table table-hover">
+                    <thead>
+                    <tr>
+                        {% if not hasEnterprise %}
+
+                            <th>Gender</th>
+                            <th>Name</th>
+
+                        {% else %}
+
+                            <th>Company</th>
+
+                        {% endif %}
+
+                        <th>Email</th>
+                        <th>Mobilephone</th>
+                        <th>Fixe</th>
+                        <th>Address</th>
+                        <th>Complement</th>
+                        <th>Zipcode</th>
+                        <th>City</th>
+                        <th>District</th>
+                        <th>Country</th>
+
+                        {% block otherTh %}
+                        {% endblock otherTh %}
+
+                        {% if not hasEnterprise %}
+
+                        <th>Birthday</th>
+
+                        {% endif %}
+
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for person in people %}
+                        <tr>
+                            {% if not hasEnterprise %}
+
+                                <td>{{ person.gender }}</td>
+                                <td>{{ person.lastname | upper }} {{ person.firstname }}</td>
+
+                            {% else %}
+
+                                <td>{{ person.companyname }}</td>
+
+                            {% endif %}
+
+                            <td>{{ person.email }}</td>
+                            <td>{{ person.mainPhone }}</td>
+                            <td>{{ person.secondaryPhone }}</td>
+                            <td>{{ person.address }}</td>
+                            <td>{{ person.addressComplement }}</td>
+                            <td>{{ person.zipCode }}</td>
+                            <td>{{ person.city }}</td>
+                            <td>{{ person.district }}</td>
+                            <td>{{ person.country }}</td>
+
+                            {% block otherTd %}
+                            {% endblock otherTd %}
+{% if not hasEnterprise %}
+                            <td>{% if person.birthday %}{{ person.birthday|date('Y-m-d') }}{% endif %}</td>
+{% endif %}
+
+                            <td>
+
+                                <a href="{{ path('person_show', { 'id': person.id ,'type':Url}) }}">show</a>
+
+                                <a href="{{ path('person_edit', { 'id': person.id, 'type' : Url }) }}">edit</a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+
+                <a href="{{ path("person_new",{'type' : Url }) }}">
+                    <button class="btn btn-primary">Create a new entry</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    {% block javascripts %}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    {% endblock %}

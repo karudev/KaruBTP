@@ -1,0 +1,92 @@
+Karudev\PersonBundle\Entity\Person:
+
+    properties:
+
+        gender:
+            - Choice:
+                choices:  [M, F]
+                message:  Choose a valid gender.
+        firstname:
+
+            - Length:
+                min: 2
+                max: 50
+                minMessage: The firstname must contain at least 2 letter
+                maxMessage: The firstname must be maximum 50 letter
+        lastname:
+
+           - Length:
+                min: 2
+                max: 50
+                minMessage: The lastname must contain at least 50 letter
+                maxMessage: The lastname must be maximum 50 letter
+        email:
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+        mainPhone:
+#            - Type:
+#                type: numeric
+#                message: The value "{{ value }}" is not a valid "{{ type }}".
+            - Length:
+                min: 10
+        secondaryPhone:
+#            - Type:
+#                type: numeric
+#                message: The value "{{ value }}" is not a valid "{{ type }}".
+            - Length:
+                min: 10
+#        address:
+#        addressComplement:
+#        zipCode:
+#        city:
+#        district:
+#        country:
+#        birthday:
+
+
+Karudev\PersonBundle\Entity\Persons\Adherent:
+
+    properties:
+
+        matricule:
+            - Type:
+                type: numeric
+                message: The value "{{ value }}" is not a valid "{{ type }}".
+            
+        socialSecurityNumber:
+            - Type:
+                type: numeric
+                message: The value "{{ value }}" is not a valid "{{ type }}".
+            
+
+
+Karudev\PersonBundle\Entity\Persons\Enterprise:
+
+    properties:
+
+        companyName:
+            - Length :
+                min: 02
+                max: 100
+            - NotBlank: ~
+
+        commercialeName:
+            - Length :
+                min: 02
+                max: 100
+
+        mainUrl:
+            - Url:
+                message: The url "{{ value }}" is not a valid url.
+
+        secondaryUrl:
+            - Url:
+                message: The url "{{ value }}" is not a valid url.
+
+#        picture:
+
+
+
+
+
+

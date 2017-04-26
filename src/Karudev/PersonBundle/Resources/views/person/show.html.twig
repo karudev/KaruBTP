@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Person</h1>
+    {% if type == 'enterprise' %}
+
+        {% set hasEnterprise = true %}
+    {% else %}
+        {% set hasEnterprise = false %}
+
+    {% endif %}
+
+
+    {% if  hasEnterprise %}
+        <img height="2s0%" width="20%" src="{{ person.picture }}" class="img-thumbnail"/>
+    {% endif %}
+
+    <dl class="dl-horizontal">
+
+        <dt>Id</dt>
+        <dd>{{ person.id }}</dd>
+        {% if not hasEnterprise %}
+            <dt>Gender</dt>
+            <dd>{{ person.gender }}</dd>
+            <dt>Firstname</dt>
+            <dd>{{ person.firstname }}</dd>
+
+            <dt>Lastname</dt>
+            <dd>{{ person.lastname }}</dd>
+        {% else %}
+            <dt>Company</dt>
+            <dd>{{ person.companyname }}</dd>
+
+
+        {% endif %}
+        <dt>Email</dt>
+        <dd>{{ person.email }}</dd>
+
+        <dt>Mobilephone</dt>
+        <dd>{{ person.mainPhone }}</dd>
+
+        <dt>Fixe</dt>
+        <dd>{{ person.secondaryPhone }}</dd>
+
+        <dt>Address</dt>
+        <dd>{{ person.address }}</dd>
+
+        <dt>Addresscomplement</dt>
+        <dd>{{ person.addressComplement }}</dd>
+
+        <dt>Zipcode</dt>
+        <dd>{{ person.zipCode }}</dd>
+
+        <dt>City</dt>
+        <dd>{{ person.city }}</dd>
+
+        <dt>District</dt>
+        <dd>{{ person.district }}</dd>
+
+        <dt>Country</dt>
+        <dd>{{ person.country }}</dd>
+
+        {% if not hasEnterprise %}
+            <dt>Birthday</dt>
+            <dd>{% if person.birthday %}{{ person.birthday|date('Y-m-d') }}{% endif %}</dd>
+            {% else %}
+                <dt>Url</dt>
+                <dd><a TARGET="_blank" href="{{ person.mainUrl }}"> URL </a></dd>
+                <dt>Seconday Url</dt>
+                <dd><a TARGET="_blank" href="{{ person.secondaryUrl }}"> URL </a></dd>
+        {% endif %}
+        <dt>Createdat</dt>
+        <dd>{% if person.createdAt %}{{ person.createdAt|date('Y-m-d H:i:s') }}{% endif %}</dd>
+
+        <dt>Updatedat</dt>
+        <dd>{% if person.updatedAt %}{{ person.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</dd>
+
+
+    </dl>
+
+
+<div class="form-group">
+
+        <div class="col-sm-offset-2 col-sm-10">
+  <a href="{{ path('person_edit', { 'id': person.id ,'type' : type }) }}" >           <button type="submit" class="btn btn-default"> Edit</button>
+  </a>
+        </div>
+
+    </div>
+
+
+
+    <a href="{{ path( url ) }}"> <button class="btn btn-primary"> Back to the list</button></a>
+
+    <p></p>
+
+    {{ form_start(delete_form) }}
+    <input type="submit" class="btn btn-danger" value="Delete">
+    {{ form_end(delete_form) }}
+
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path(url) }}">Back to the list</a>#}
+        {#</li>#}
+        {#<li>#}
+
+        {#</li>#}
+        {#<li>#}
+            {#{{ form_start(delete_form) }}#}
+            {#<input type="submit" value="Delete">#}
+            {#{{ form_end(delete_form) }}#}
+        {#</li>#}
+    {#</ul>#}
+{% endblock %}

@@ -1,0 +1,6 @@
+services:
+
+    karudev_person.service.statistical_person:
+        class: Karudev\PersonBundle\Service\statisticalPerson
+        arguments: ['@doctrine.orm.entity_manager','@session']
+

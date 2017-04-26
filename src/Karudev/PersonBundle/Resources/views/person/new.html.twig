@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{#
+à modifier pour le nouveau design normalement
+https://github.com/karudev/thinkdeed/blob/master/src/Td/CrmBundle/Resources/views/Deal/update.html.twig
+#}
+{% block body %}
+
+    <h1> Creation </h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal','novalidate':'novalide'}}) }}
+
+    {% for child in form %}
+
+
+
+
+        <div class="form-group">
+
+{% if form_label(child) not in form_label(form._token) %}
+            {{ form_label(child, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+
+{% endif %}
+            <div class="col-sm-5">
+
+                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(child) }}
+
+            </div>
+
+        </div>
+
+
+
+    {% endfor %}
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default"> Create </button>
+    </div>
+</div>
+      {{form_rest(form)}}
+      {{ form_end(form) }}
+
+    <ul>
+        <li>
+
+            <a href="{{ path(url) }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+
+     {% include "@KarudevPerson/person/js/datepicker.html.twig" %}
+
+{% endblock javascripts %}

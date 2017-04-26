@@ -1,0 +1,18 @@
+{% extends 'KarudevPersonBundle:person:index.html.twig' %}
+
+{% block otherTh %}
+    <th>Job</th>
+{% endblock otherTh %}
+
+    {% block otherTd %}
+
+        <td>      {{ person.job.label }}        </td>
+
+    {% endblock otherTd %}
+
+
+
+
+{% block linkToEdit %}
+    {{ path('person_edit', { 'id': person.id, 'type' : 'adherent' }) }}
+{% endblock linkToEdit %}

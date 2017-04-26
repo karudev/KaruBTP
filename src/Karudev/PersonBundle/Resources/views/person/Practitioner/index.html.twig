@@ -1,0 +1,8 @@
+{% extends 'KarudevPersonBundle:person:index.html.twig' %}
+
+
+
+
+{% block linkToEdit %}
+    {{ path('person_edit', { 'id': person.id, 'type' : Url}) }}
+{% endblock linkToEdit %}

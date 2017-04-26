@@ -1,0 +1,31 @@
+
+
+#path for index adherent
+
+adherent_main_index:
+    path : /AdherentMain
+    defaults: { _controller: KarudevPersonBundle:Person/Adherent:mainAdherent}
+
+adherent_secondary_index:
+    path : /adherentSecondary
+    defaults: { _controller: KarudevPersonBundle:Person/Adherent:secondaryAdherent}
+
+
+
+
+#path for index practitioner
+
+practitioner_index:
+    path : /practitioner
+    defaults: { _controller: KarudevPersonBundle:Person/Practitioner:index}
+
+
+#path for persons
+
+
+
+
+person_delete:
+    path : /{type}/{id}
+    defaults: { _controller: KarudevPersonBundle:Person:delete}
+    methods: [DELETE]
