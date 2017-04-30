@@ -44,49 +44,5 @@ Karudev\PersonBundle\Entity\Person:
 #        birthday:
 
 
-Karudev\PersonBundle\Entity\Persons\Adherent:
-
-    properties:
-
-        matricule:
-            - Type:
-                type: numeric
-                message: The value "{{ value }}" is not a valid "{{ type }}".
-            
-        socialSecurityNumber:
-            - Type:
-                type: numeric
-                message: The value "{{ value }}" is not a valid "{{ type }}".
-            
-
-
-Karudev\PersonBundle\Entity\Persons\Enterprise:
-
-    properties:
-
-        companyName:
-            - Length :
-                min: 02
-                max: 100
-            - NotBlank: ~
-
-        commercialeName:
-            - Length :
-                min: 02
-                max: 100
-
-        mainUrl:
-            - Url:
-                message: The url "{{ value }}" is not a valid url.
-
-        secondaryUrl:
-            - Url:
-                message: The url "{{ value }}" is not a valid url.
-
-#        picture:
-
-
-
-
 
 

@@ -8,4 +8,4 @@ Karudev\PersonBundle\Entity\Persons\Person:
         address: "<address()>"
         zipCode: "<postcode()>"
         city: "<city()>"
-        country: "<country()>"
+        country: "FR"

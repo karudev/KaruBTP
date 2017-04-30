@@ -31,10 +31,16 @@ karudev_person_person_edit:
 
     
 #path for index enterprise
-karudev_person_enterprise_index:
-    path : /enterprise
-    defaults: { _controller: KarudevPersonBundle:Person/Enterprise:index}
+karudev_persons_person_index:
+    path : /persons/person
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:index}
     
+karudev_persons_person_search:
+    path : /persons/person/search
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:search}
+    options:
+        expose: true
+        
 karudev_person_enterprise_currententerprise:
     path : /enterprise/current/{id}
     defaults: { _controller: KarudevPersonBundle:Person/Enterprise:currentEnterprise}
