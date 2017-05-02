@@ -15,7 +15,6 @@ class PersonController extends Controller
 {
     /**
      * @Template()
-     * @Method({"GET"})
      * @param Person $person
      * @return type
      */
@@ -34,7 +33,6 @@ class PersonController extends Controller
     
     /**
      * @Template()
-     * @Method({"GET"})
      * @param Person $person
      * @return type
      */
@@ -48,15 +46,31 @@ class PersonController extends Controller
     
     /**
      * @Template()
-     * @Method({"GET"})
      * @param Person $person
      * @return type
      */
-    public function editAction(BasePerson $person)
+    public function editAction(Request $request , BasePerson $person)
     {
-        $form = $this->createForm(PersonType::class, $person);
+        $form = $this->createForm(PersonType::class, $person,[
+            'method' => 'POST',
+            'action' => $this->generateUrl('karudev_persons_person_edit',['person' => $person->getId() ])
+        ]);
         
+        $form->handleRequest($request);
         
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+        
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+            }else{
+               // dump($form->getErrors()); die();
+            }
+            
+        }
+
+
         return [
             'person' => $person,
             'form' => $form->createView()

@@ -22,11 +22,11 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           // ->add('file',FileType::class,['label' => 'Photo'])
+            //->add('file',FileType::class,['label' => 'Photo'])
             ->add('gender', ChoiceType::class, array(
                 'label' => 'Civilité',
                 'choices' => array(
-                    'Homme' => 'M',
+                    'Homme' => 'H',
                     'Femme' => 'F'
                 ),
                 'required'    => true,

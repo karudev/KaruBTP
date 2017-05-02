@@ -168,7 +168,19 @@ abstract class BasePerson
 
     
     public function __toString() {
-        return $this->firstname.' '.$this->lastname;
+        return $this->getCivility().' '.$this->firstname.' '.$this->lastname;
+    }
+    
+    public function getCivility(){
+        $civility = null;
+        
+        if($this->gender == self::GENDER_MAN){
+          $civility = "M."; 
+        } elseif($this->gender == self::GENDER_WOMAN){
+           $civility = "MME";   
+        }
+        
+        return $civility;
     }
     /**
      * Get id
