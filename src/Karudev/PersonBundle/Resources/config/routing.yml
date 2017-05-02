@@ -34,6 +34,22 @@ karudev_person_person_edit:
 karudev_persons_person_index:
     path : /persons/person
     defaults: { _controller: KarudevPersonBundle:Persons/Person:index}
+    methods: [GET]
+    
+karudev_persons_person_show:
+    path : /persons/person/show/{person}
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:show}
+    methods: [GET]
+    requirements:
+        id: \d+
+
+
+karudev_persons_person_edit:
+    path : /persons/person/edit/{person}
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:edit}
+    methods: [GET]
+    requirements:
+        id: \d+
     
 karudev_persons_person_search:
     path : /persons/person/search

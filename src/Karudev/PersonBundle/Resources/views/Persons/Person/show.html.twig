@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+{% block styleSheet %}
+{% endblock styleSheet %}
+
+{% block body %}
+   
+    
+    <div class="col-md-12 form-group">
+    <div class="col-md-12"><h2>{{person}}</h2></div>
+    <div class="col-md-12 form-group">
+        <div class="col-md-12"><h3>Contact</h3> </div>
+        <div class="col-md-12"><div class="col-md-2">Téléphone principal :</div><div class="col-md-10">{{person.mainPhone}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Téléphone Secondaire :</div><div class="col-md-10">{{person.secondaryPhone}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Email :</div><div class="col-md-10">{{person.email}}</div></div>
+    </div>
+    <div class="col-md-12 form-group">
+        
+        <div class="col-md-12"><h3>Adresse</h3></div>
+        <div class="col-md-12"><div class="col-md-12">{{person.address}}</div></div>
+        <div class="col-md-12"><div class="col-md-12">{{person.zipCode}}, {{person.city}} {{person.country}}</div></div>
+    </div>
+    </div>
+    <div class="col-md-12 form-group"> 
+        <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}"> <button class="btn btn-primary">Modifier</button></a>
+    </div>
+{% endblock body %}
+{% block javascripts %}
+{% endblock javascripts %}

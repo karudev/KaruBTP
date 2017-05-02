@@ -3,13 +3,14 @@
 {% endblock styleSheet %}
 
 {% block body %}
+    <div><h2>Liste des personnes</h2></div>
     <div>
         {{form_start(searchForm)}}
         {{form_row(searchForm.search)}}
         {{form_end(searchForm)}}
     </div>
     <div>
-        <table class="table">
+        <table class="table table-bordered table-striped small">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -21,6 +22,7 @@
                     <th>Code postal</th>
                     <th>Ville</th>
                     <th>Pays</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +37,10 @@
                     <td>{{person.zipCode}}</td>
                     <td>{{person.city}}</td>
                     <td>{{person.country}}</td>
+                    <td><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
+                    <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}">modifier</a> | 
+                    <a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">supprimer</a></td>
+                    
                 </tr>
                 {% endfor %}
             </tbody>

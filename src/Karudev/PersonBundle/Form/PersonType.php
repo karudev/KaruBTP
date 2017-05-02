@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PersonType extends AbstractType
 {
@@ -35,13 +36,13 @@ class PersonType extends AbstractType
             ->add('firstname',TextType::class,['label' => 'Prénom'])
             ->add('lastname',TextType::class,['label' => 'Nom'])
             ->add('email',EmailType::class,['label' => 'Email'])
-            ->add('mainPhone',TextType::class,['label' => 'Téléphone'])
-            
+            ->add('mainPhone',TextType::class,['label' => 'Téléphone principal'])
+            ->add('secondaryPhone',TextType::class,['label' => 'Téléphone secondaire'])
             ->add('address',TextType::class,['label' => 'Adresse (rue)'])
             ->add('addressComplement')
             ->add('zipCode',TextType::class,['label' => 'Code postal'])
             ->add('city',TextType::class,['label' => 'Ville'])
-            ->add('district')
+            //->add('district')
             ->add('country')
             ->add('birthday', BirthdayType::class, array(
                // 'year'=> range(1900,(date('Y')-10)),
@@ -53,6 +54,7 @@ class PersonType extends AbstractType
                 // add a class that can be selected in JavaScript
                 //'attr' => ['class' => 'js-datepicker']
 ))
+             ->add('submit',SubmitType::class);
 
         ;
     }
@@ -63,7 +65,7 @@ class PersonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Karudev\PersonBundle\Entity\Person'
+            'data_class' => 'Karudev\PersonBundle\Entity\BasePerson'
         ));
     }
 }

@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+{% block styleSheet %}
+{% endblock styleSheet %}
+
+{% block body %}
+   
+    {{form_start(form)}}
+    <div class="col-md-12 form-group">
+    <div class="col-md-12"><h2>{{person}}</h2></div>
+    <div class="col-md-12 form-group">
+        <div class="col-md-12"><h3>Civilité</h3> </div>
+        <div class="col-md-12"><div class="col-md-2">Genre :</div><div class="col-md-10">{{form_widget(form.gender)}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Prénom :</div><div class="col-md-10">{{form_widget(form.firstname)}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Nom :</div><div class="col-md-10">{{form_widget(form.lastname)}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Date de naissance :</div><div class="col-md-10">{{form_widget(form.birthday)}}</div></div>
+    </div>
+    <div class="col-md-12 form-group">
+        <div class="col-md-12"><h3>Contact</h3> </div>
+        <div class="col-md-12"><div class="col-md-2">Téléphone principal :</div><div class="col-md-10">{{form_widget(form.mainPhone)}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Téléphone Secondaire :</div><div class="col-md-10">{{form_widget(form.secondaryPhone)}}</div></div>
+        <div class="col-md-12"><div class="col-md-2">Email :</div><div class="col-md-10">{{form_widget(form.email)}}</div></div>
+    </div>
+    <div class="col-md-12 form-group">
+        
+        <div class="col-md-12"><h3>Adresse</h3></div>
+        <div class="col-md-12"><div class="col-md-12">{{form_widget(form.address)}}</div></div>
+        <div class="col-md-12"><div class="col-md-12">{{form_widget(form.addressComplement)}}</div></div>
+        <div class="col-md-12"><div class="col-md-12">{{form_widget(form.zipCode)}}, {{form_widget(form.city)}} {{form_widget(form.country)}}</div></div>
+    </div>
+    <div class="col-md-12 form-group">
+        {{form_widget(form.submit,{'attr':{'class':'btn btn-primary' } } ) }}
+    </div>
+    </div>
+    {{form_end(form)}}
+{% endblock body %}
+{% block javascripts %}
+{% endblock javascripts %}
