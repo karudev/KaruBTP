@@ -50,6 +50,13 @@ karudev_persons_person_edit:
     methods: [GET,POST]
     requirements:
         id: \d+
+        
+karudev_persons_person_delete:
+    path : /persons/person/delete/{person}
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:delete}
+    methods: [GET]
+    requirements:
+        id: \d+
     
 karudev_persons_person_search:
     path : /persons/person/search

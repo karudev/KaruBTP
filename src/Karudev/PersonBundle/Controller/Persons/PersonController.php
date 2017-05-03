@@ -75,5 +75,18 @@ class PersonController extends Controller
         ];
     }
     
+    public function deleteAction(BasePerson $person)
+    {  
+        /**
+         * @todo Verification if we can delete this person
+         */
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($person);
+        $em->flush();
+        
+        return $this->redirectToRoute('karudev_persons_person_index');
+    }
+    
     
 }

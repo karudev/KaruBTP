@@ -30,7 +30,7 @@
                     <td>{{person.country}}</td>
                     <td nowrap><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
                     <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}">modifier</a> | 
-                    <a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">supprimer</a></td>
+                    <a href="{{path('karudev_persons_person_delete',{'person' : person.id})}}">supprimer</a></td>
                     
                 </tr>
                 {% endfor %}

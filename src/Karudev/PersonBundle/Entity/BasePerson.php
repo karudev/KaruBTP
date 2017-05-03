@@ -3,6 +3,7 @@
 namespace Karudev\PersonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Karudev\PersonBundle\Service\FileService;
 use Symfony\Component\Filesystem\Filesystem;
@@ -19,7 +20,7 @@ use Symfony\Component\Filesystem\Filesystem;
  * @ORM\DiscriminatorMap({
 
  * })
- *
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  */
 abstract class BasePerson
 {

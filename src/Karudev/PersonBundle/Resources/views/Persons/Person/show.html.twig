@@ -22,6 +22,7 @@
     </div>
     <div class="col-md-12 form-group"> 
         <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}"> <button class="btn btn-primary">Modifier</button></a>
+        <a href="{{path('karudev_persons_person_delete',{'person' : person.id})}}"> <button class="btn btn-danger">Supprimer</button></a>
     </div>
 {% endblock body %}
 {% block javascripts %}
