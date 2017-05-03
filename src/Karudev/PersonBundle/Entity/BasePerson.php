@@ -738,4 +738,15 @@ abstract class BasePerson
     {
         return $this->filePath;
     }
+    
+    public function getFullAddress()
+    {
+       $str = $this->address;
+       
+       if($this->addressComplement != null){
+           $str .=', '.$this->addressComplement;
+       }
+       
+       return $str;
+    }
 }

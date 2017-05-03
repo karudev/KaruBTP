@@ -4,6 +4,10 @@
 
 {% block body %}
     <div><h2>Liste des personnes</h2></div>
+    <div class="form-group"><a href="{{path('karudev_persons_person_new')}}">
+            <button class="btn btn-primary">Nouveau</button>
+        </a>
+    </div>
     <div>
         <table id="results" class="table table-bordered table-striped small">
             <thead>
@@ -24,7 +28,7 @@
                     <td nowrap>{{person}}</td>
                     <td>{{person.email}}</td>
                     <td>{{person.mainPhone}} / {{person.secondaryPhone}}</td>
-                    <td>{{person.address}}</td>
+                    <td>{{person.fullAddress()}}</td>
                     <td>{{person.zipCode}}</td>
                     <td>{{person.city}}</td>
                     <td>{{person.country}}</td>

@@ -42,8 +42,12 @@ karudev_persons_person_show:
     methods: [GET]
     requirements:
         id: \d+
-
-
+        
+karudev_persons_person_new:
+    path : /persons/person/new
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:new}
+    methods: [GET,POST]
+    
 karudev_persons_person_edit:
     path : /persons/person/edit/{person}
     defaults: { _controller: KarudevPersonBundle:Persons/Person:edit}

@@ -10,6 +10,7 @@ use Karudev\PersonBundle\Entity\BasePerson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Karudev\PersonBundle\Form\PersonType;
+use Karudev\PersonBundle\Entity\Persons\Person;
 
 class PersonController extends Controller
 {
@@ -44,6 +45,40 @@ class PersonController extends Controller
     
     /**
      * @Template()
+     * @return type
+     */
+    public function newAction(Request $request)
+    {
+        //if ($request->getMethod() == 'GET') {
+            $person = new Person();
+
+            $form = $this->createForm(PersonType::class, $person,[
+                'method' => 'POST',
+                'action' => $this->generateUrl('karudev_persons_person_new')
+            ]);
+       // }
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+        
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                return $this->redirectToRoute('karudev_persons_person_index');
+            }
+            
+        }
+
+
+        return [
+            'form' => $form->createView()
+        ];
+    }
+    
+    /**
+     * @Template()
      * @param Person $person
      * @return type
      */
@@ -62,8 +97,6 @@ class PersonController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($person);
                 $em->flush();
-            }else{
-               // dump($form->getErrors()); die();
             }
             
         }
