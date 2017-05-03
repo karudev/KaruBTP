@@ -5,18 +5,12 @@
 {% block body %}
     <div><h2>Liste des personnes</h2></div>
     <div>
-        {{form_start(searchForm)}}
-        {{form_row(searchForm.search)}}
-        {{form_end(searchForm)}}
-    </div>
-    <div>
-        <table class="table table-bordered table-striped small">
+        <table id="results" class="table table-bordered table-striped small">
             <thead>
                 <tr>
                     <th>Nom</th>
                     <th>Email</th>
-                    <th>Téléphone principal</th>
-                    <th>Téléphone secondaire</th>
+                    <th>Téléphones</th>
                     <th>Adresse</th>
                     <th>Code postal</th>
                     <th>Ville</th>
@@ -27,15 +21,14 @@
             <tbody>
                 {% for person in persons %}
                 <tr>
-                    <td>{{person}}</td>
+                    <td nowrap>{{person}}</td>
                     <td>{{person.email}}</td>
-                    <td>{{person.mainPhone}}</td>
-                    <td>{{person.secondaryPhone}}</td>
+                    <td>{{person.mainPhone}} / {{person.secondaryPhone}}</td>
                     <td>{{person.address}}</td>
                     <td>{{person.zipCode}}</td>
                     <td>{{person.city}}</td>
                     <td>{{person.country}}</td>
-                    <td><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
+                    <td nowrap><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
                     <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}">modifier</a> | 
                     <a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">supprimer</a></td>
                     

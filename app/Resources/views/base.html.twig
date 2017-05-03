@@ -6,12 +6,16 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('assets/css/bootstrap-theme.min.css') }}" rel="stylesheet"/>
+   
+        <link href="{{ asset('assets/vendor/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet"/>
     </head>
     <body>
+        <div class="col-md-12">
         {% block body %}{% endblock %}
+        </div>
         
         <script src="{{ asset('assets/js/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datatable/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% block javascripts %}{% endblock %}

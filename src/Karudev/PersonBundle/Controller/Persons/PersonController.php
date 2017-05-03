@@ -21,13 +21,11 @@ class PersonController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $searchForm = $this->createForm(SearchPersonType::class);
 
         $persons = $em->getRepository('KarudevPersonBundle:Persons\Person')->findBy([]);
 
         return [
-            'persons' => $persons,
-            'searchForm' => $searchForm->createView()
+            'persons' => $persons
         ];
     }
     
@@ -77,12 +75,5 @@ class PersonController extends Controller
         ];
     }
     
-    public function searchAction(Request $request){
-        
-      $data = $request->get('search_person');
-      
-      dump($data['search']);
-      return new JsonResponse();  
-    }
     
 }
