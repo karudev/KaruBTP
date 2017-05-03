@@ -1,0 +1,11 @@
+Karudev\PersonBundle\Entity\Persons\Prospect:
+    person_{1..100}:
+       
+        lastname: "<lastName()>"
+        firstname: "<firstName()>"
+        email: "<safeEmail()>"
+        mainPhone: "<phoneNumber()>"
+        address: "<address()>"
+        zipCode: "<postcode()>"
+        city: "<city()>"
+        country: "FR"

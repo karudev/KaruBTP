@@ -1,0 +1,11 @@
+Karudev\PersonBundle\Entity\Persons\Customer:
+    customer_{1..50}:
+       
+        lastname: "<lastName()>"
+        firstname: "<firstName()>"
+        email: "<safeEmail()>"
+        mainPhone: "<phoneNumber()>"
+        address: "<address()>"
+        zipCode: "<postcode()>"
+        city: "<city()>"
+        country: "FR"

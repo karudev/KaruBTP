@@ -8,10 +8,10 @@ use Karudev\PersonBundle\Entity\BasePerson;
 
 /**
  * Person
- * @ORM\Table(name="person")
+ * @ORM\Table(name="collaborator")
  * @ORM\Entity()
  */
-class Person extends BasePerson
+class Collaborator extends BasePerson
 {
     
 }

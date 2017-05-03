@@ -13,7 +13,7 @@ use Symfony\Component\Filesystem\Filesystem;
  * 
  * BasePerson
  * @ORM\Table(name="base_person")
- * @ORM\Entity(repositoryClass="Karudev\PersonBundle\Repository\PersonRepository")
+ * @ORM\Entity(repositoryClass="Karudev\PersonBundle\Repository\BasePersonRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
@@ -170,6 +170,11 @@ abstract class BasePerson
     
     public function __toString() {
         return $this->getCivility().' '.$this->firstname.' '.$this->lastname;
+    }
+    
+    public function getType()
+    {
+      return get_class($this);
     }
     
     public function getCivility(){

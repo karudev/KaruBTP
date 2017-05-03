@@ -12,6 +12,7 @@
         <table id="results" class="table table-bordered table-striped small">
             <thead>
                 <tr>
+                    <th>Type</th>
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Téléphones</th>
@@ -25,6 +26,7 @@
             <tbody>
                 {% for person in persons %}
                 <tr>
+                    <td>{{person.getType()}}</td>
                     <td nowrap>{{person}}</td>
                     <td>{{person.email}}</td>
                     <td>{{person.mainPhone}} / {{person.secondaryPhone}}</td>

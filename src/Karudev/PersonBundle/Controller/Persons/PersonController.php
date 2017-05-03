@@ -23,7 +23,7 @@ class PersonController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $persons = $em->getRepository('KarudevPersonBundle:Persons\Person')->findBy([]);
+        $persons = $em->getRepository('KarudevPersonBundle:BasePerson')->findBy([]);
 
         return [
             'persons' => $persons

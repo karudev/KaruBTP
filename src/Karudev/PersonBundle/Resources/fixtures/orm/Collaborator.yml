@@ -1,5 +1,5 @@
-Karudev\PersonBundle\Entity\Persons\Person:
-    person_{1..50}:
+Karudev\PersonBundle\Entity\Persons\Collaborator:
+    collaborator_{1..10}:
        
         lastname: "<lastName()>"
         firstname: "<firstName()>"
