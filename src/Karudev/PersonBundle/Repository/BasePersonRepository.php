@@ -10,4 +10,34 @@ namespace Karudev\PersonBundle\Repository;
  */
 class BasePersonRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    /**
+     * Get array of persons by type
+     * @param array $types
+     * @return array
+     */
+    public function get(array $types = null): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        if($types != null){
+            $sep = null;
+            $instanceOf = null;
+            foreach ($types as $key => $value) {
+                
+                if($key > 0){
+                   $sep = ' OR '; 
+                }
+                
+                $instanceOf .= $sep.$qb->expr()->isInstanceOf('p', "\Karudev\PersonBundle\Entity\Persons\\".$value);
+               
+                
+                
+                $qb->where($instanceOf); 
+               
+            }
+        }
+                
+        return $qb ->getQuery()->getResult();
+    }
 }

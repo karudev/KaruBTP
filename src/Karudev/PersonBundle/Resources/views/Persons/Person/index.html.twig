@@ -3,45 +3,49 @@
 {% endblock styleSheet %}
 
 {% block body %}
-    <div><h2>Liste des personnes</h2></div>
-    <div class="form-group"><a href="{{path('karudev_persons_person_new')}}">
-            <button class="btn btn-primary">Nouveau</button>
+    <div class="text-center form-group "><h2>Liste des personnes</h2></div>
+    <div class="form-group col-md-12">
+        <div class="col-md-2">
+        <a href="{{path('karudev_persons_person_new')}}">
+            <button class="btn btn-small btn-default">Nouveau collaborateur</button>
         </a>
+        </div>
+        <div class="col-md-2">
+        <a href="{{path('karudev_persons_person_new')}}">
+            <button class="btn btn-small btn-primary">Nouveau prospect</button>
+        </a>
+        </div>
+        <div class="col-md-2">
+        <a href="{{path('karudev_persons_person_new')}}">
+            <button class="btn btn-small btn-success">Nouveau client</button>
+        </a>
+        </div>
     </div>
-    <div>
-        <table id="results" class="table table-bordered table-striped small">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Téléphones</th>
-                    <th>Adresse</th>
-                    <th>Code postal</th>
-                    <th>Ville</th>
-                    <th>Pays</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for person in persons %}
-                <tr>
-                    <td>{{person.getType()}}</td>
-                    <td nowrap>{{person}}</td>
-                    <td>{{person.email}}</td>
-                    <td>{{person.mainPhone}} / {{person.secondaryPhone}}</td>
-                    <td>{{person.fullAddress()}}</td>
-                    <td>{{person.zipCode}}</td>
-                    <td>{{person.city}}</td>
-                    <td>{{person.country}}</td>
-                    <td nowrap><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
-                    <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}">modifier</a> | 
-                    <a href="{{path('karudev_persons_person_delete',{'person' : person.id})}}">supprimer</a></td>
-                    
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="form-group col-md-12">
+        <form name="choice">
+        <div class="col-md-2">
+            <label for="Collaborator">
+                <input checked id="Collaborator" type="checkbox" name="choice[]" value="Collaborator">
+                <img src="{{asset(constant('Karudev\\PersonBundle\\Entity\\Persons\\Collaborator::PATH_ICO'))}}" /> Collaborateurs
+            </label>
+        </div>
+        <div class="col-md-2">
+            <label for="Prospect">
+                <input checked id="Prospect" type="checkbox" name="choice[]" value="Prospect">
+                <img src="{{asset(constant('Karudev\\PersonBundle\\Entity\\Persons\\Prospect::PATH_ICO'))}}" /> Prospects
+            </label>
+        </div>
+        <div class="col-md-2">
+            <label for="Customer">
+                <input checked id="Customer" type="checkbox" name="choice[]" value="Customer">
+                <img src="{{asset(constant('Karudev\\PersonBundle\\Entity\\Persons\\Customer::PATH_ICO'))}}" /> Clients
+            </label>
+        </div>
+        </form>
+    </div>
+      
+    <div id="data">
+        {{render(controller('KarudevPersonBundle:Persons/Person:data'))}}
     </div>
 {% endblock body %}
 {% block javascripts %}

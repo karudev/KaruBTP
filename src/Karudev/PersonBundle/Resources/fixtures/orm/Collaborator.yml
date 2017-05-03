@@ -9,3 +9,18 @@ Karudev\PersonBundle\Entity\Persons\Collaborator:
         zipCode: "<postcode()>"
         city: "<city()>"
         country: "FR"
+        price: 50
+        unitPriceId: 1
+        
+    collaborator_{10..15}:
+       
+        lastname: "<lastName()>"
+        firstname: "<firstName()>"
+        email: "<safeEmail()>"
+        mainPhone: "<phoneNumber()>"
+        address: "<address()>"
+        zipCode: "<postcode()>"
+        city: "<city()>"
+        country: "FR"
+        price: 5
+        unitPriceId: 2

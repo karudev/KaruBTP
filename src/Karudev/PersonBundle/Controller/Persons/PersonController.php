@@ -21,11 +21,28 @@ class PersonController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $persons = $em->getRepository('KarudevPersonBundle:BasePerson')->findBy([]);
 
         return [
+        ];
+    }
+    
+    /**
+     * @Template()
+     * @param Request $request
+     * @return type
+     */
+    public function dataAction(Request $request)
+    {
+        $invoiceParam = $this->container->getParameter('karudev_person.invoice');
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $types = $request->get('choice');
+
+        $persons = $em->getRepository('KarudevPersonBundle:BasePerson')->get($types);
+
+        return [
+            'invoiceParam' => $invoiceParam,
             'persons' => $persons
         ];
     }

@@ -30,11 +30,18 @@ karudev_person_person_edit:
         expose: true
 
     
-#path for index enterprise
+
 karudev_persons_person_index:
     path : /persons/person
     defaults: { _controller: KarudevPersonBundle:Persons/Person:index}
     methods: [GET]
+    
+karudev_persons_person_data:
+    path : /persons/person/data
+    defaults: { _controller: KarudevPersonBundle:Persons/Person:data}
+    methods: [GET,POST]
+    options:
+        expose: true
     
 karudev_persons_person_show:
     path : /persons/person/show/{person}

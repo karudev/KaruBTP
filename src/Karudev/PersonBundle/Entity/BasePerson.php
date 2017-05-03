@@ -12,7 +12,7 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * 
  * BasePerson
- * @ORM\Table(name="base_person")
+ * @ORM\Table(name="person")
  * @ORM\Entity(repositoryClass="Karudev\PersonBundle\Repository\BasePersonRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
@@ -43,6 +43,7 @@ abstract class BasePerson
      * @ORM\Column(name="gender", type="string", length=1, nullable=true)
      */
     protected $gender;
+    
 
     /**
      *
@@ -754,4 +755,9 @@ abstract class BasePerson
        
        return $str;
     }
+    
+    /*
+     * Path icone
+     */
+    abstract public function getPathIcoType();
 }

@@ -1,0 +1,35 @@
+<table id="results" class="table table-bordered table-striped small">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Téléphones</th>
+            <th>Adresse</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>Pays</th>
+            {% if invoiceParam %} <th>Facturation</th> {% endif %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+            <tr>
+                <td><img src="{{asset(person.getPathIcoType())}}" /></td>
+                <td nowrap>{{person}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.mainPhone}} / {{person.secondaryPhone}}</td>
+                <td>{{person.fullAddress()}}</td>
+                <td>{{person.zipCode}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.country}}</td>
+                {% if invoiceParam %} <td>-</td> {% endif %}
+                <td nowrap><a href="{{path('karudev_persons_person_show',{'person' : person.id})}}">+ détails</a> | 
+                    <a href="{{path('karudev_persons_person_edit',{'person' : person.id})}}">modifier</a> | 
+                    <a href="{{path('karudev_persons_person_delete',{'person' : person.id})}}">supprimer</a></td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -13,5 +13,11 @@ use Karudev\PersonBundle\Entity\BasePerson;
  */
 class Customer extends BasePerson
 {
+    const PATH_ICO = '/bundles/karudevperson/images/ico/customer.png';
+   
     
+    public function getPathIcoType() {
+       return self::PATH_ICO;
+    }
+
 }
